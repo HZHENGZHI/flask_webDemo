@@ -26,8 +26,9 @@ def login(id,pw):
     return result
 @app.route('/')
 def hello_world():
-    dict1=select("2018")
-    return Response(json.dumps(dict1),mimetype='application/json')
+    # return Response(json.dumps(dict1),mimetype='application/json')
+    return render_template("index_three.html")
+
 @app.route('/center',methods=['POST','GET'])#等同于127.0.0.1/center
 def center():
     id=request.form.get("id")
@@ -35,14 +36,24 @@ def center():
     pwd=request.form.get("pwd")
     print(pwd)
     dict1=login(id,pwd)
-    s=0;
-    dict2=select(id)
-    if(dict2):
-        return Response(json.dumps(dict2), mimetype='application/json')
+    if(dict1):
+        s="登陆成功"
+        return render_template("index_two.html",data=s)
     else:
         s="登陆失败"
         return render_template("index.html",data=s)
 
+@app.route('/index')
+def index():
+    return render_template('index.html')
 
+@app.route('/lodin',methods=['POST','GET'])
+def lodin():
+    years=request.form.get("years")
+    print(years)
+    dict=select(years)
+    print(dict)
+    if(dict):
+        return render_template("index_two.html",data=dict,value1=years)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=1,port=5000,host='0.0.0.0')

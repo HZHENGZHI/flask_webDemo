@@ -5,6 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-123123
+<p>
+    <form action="/lodin" method="post">
+    <input type="text" name="years" value="{{ value1 }}">
+     <input type="submit" value="查询">
+</form>
+
+    <table >
+    <tr>
+    <th>科目</th>
+    <th>分数</th>
+  </tr>
+  <tr>
+      {% for score in data %}
+          <td>{{ score.subject }}</td>
+          <td>{{ score.score }}</td>
+  </tr> {% endfor %}
+</table>
+</p>
 </body>
 </html>

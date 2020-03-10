@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Title</title>
 </head>
 <body>
+<div id="lodin">
+<img src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2576088318.jpg">
 <form action="/center" method="post">
     账户： <input type="text" name="id"><br>
     密码： <input type="password" name="pwd"><br>
-    <input type="submit" value="登陆">
+    <input type="submit" value="登陆" >
 </form>
-aaaaaaii
-{% if data %}
-    <a href="index_two.html"></a>
-{% endif %}
+    {{ data }}
+</div>
 </body>
 </html>
